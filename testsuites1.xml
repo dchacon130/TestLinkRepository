@@ -1,0 +1,975 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CitasMedicas_AlinearMédicoPersonal" >
+<node_order><![CDATA[120]]></node_order>
+<details><![CDATA[<p>El usuario afiliado a Plan Complementario (PC) puede realizar el proceso de agendamiento de cita con su m&eacute;dico personal a trav&eacute;s de la plataforma virtual de transacciones en l&iacute;nea.</p>]]> 
+</details>
+<testcase internalid="589965" name="Smoke Test">
+	<node_order><![CDATA[100]]></node_order>
+	<externalid><![CDATA[4974]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>Se realiza smoke test para validar funcionalidad</p>]]></summary>
+	<preconditions><![CDATA[<p>_ El usuario debe estar afiliado al Plan Complementario y el estado de afiliaci&oacute;n debe ser Activo<br />
+_ El usuario debe tener asignado un m&eacute;dico personal</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>Ingresar a la aplicaci&oacute;n de Transacciones en L&iacute;nea el sitio de Salud</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra las diferentes opciones de Salud</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la opci&oacute;n Solicitar Citas m&eacute;dicas</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra las opciones para seleccionar si la cita es para cotizante o beneficiario</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>Pulsar sobre el bot&oacute;n Cita para cotizante</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra el formulario para diligenciar</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>Desplegar el listado y seleccionar la especialidad de la cual se requiere pedir cita</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra el mensaje: &quot;Se&ntilde;or usuario, el m&eacute;dico personal que tiene asignado es NNNNNNN = Nombre AAAAAAA = apellidos, que atiende = ESPECILIDAD en la unidad de servicio DDDDDDDD.<br />
+&iquest;Desea solicitar cita m&eacute;dica con su m&eacute;dico personal?&rdquo;. Se muestran los botones &ldquo;Solicitar&rdquo; y &ldquo;Cancelar&rdquo;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>Pulsar la opci&oacute;n Solicitar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema cierra la ventana emergente, deja ubicado al usuario en la pantalla Como desea buscar su cita m&eacute;dica y bloquea la secci&oacute;n Especialidad de la cual requiere la cita dejando por defecto la especialidad seleccionada por el usuario.</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la fecha en la cual se quiere la atenci&oacute;n</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra en el campo la fecha seleccionada</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[<p>Pulsar en el bot&oacute;n Continuar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema pasa a la pantalla siguiente y muestra la agenda del m&eacute;dico</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[8]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la hora de la cita pulsando en el link Solicitar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra un mensaje para confirmar la cita</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[9]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Confirmar solicitud de cita</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema guarda la solicitud de la cita m&eacute;dica</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+<testsuite name="Flujo Normal" >
+<node_order><![CDATA[101]]></node_order>
+<details><![CDATA[<p>Validar el flujo normal de eventos para agendar una cita medica con medico tratante</p>]]> 
+</details>
+<testcase internalid="589977" name="Ingreso a la aplicación">
+	<node_order><![CDATA[100]]></node_order>
+	<externalid><![CDATA[4975]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>Se verifica que un usuario con Plan complementario tenga acceso a la aplicaci&oacute;n y a la opci&oacute;n para solicitar citas medicas</p>]]></summary>
+	<preconditions><![CDATA[<p>_ El usuario debe estar afiliado al Plan Complementario y el estado de afiliaci&oacute;n debe ser Activo<br />
+_ El usuario debe tener asignado un m&eacute;dico personal</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>Ingresar a la aplicaci&oacute;n de Transar ingresando usuario y contrase&ntilde;a</p>]]></actions>
+	<expectedresults><![CDATA[<p>Transar permite el acceso al sistema</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la&nbsp;pesta&ntilde;a Salud de la parte superior</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra las opciones de salud</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Solicitar citas m&eacute;dicas</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida que el usuario cuenta con Plan Complementario y esta Activo, muestra el m&oacute;dulo de bienvenida para solicitud de citas medicas</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="589982" name="Agendar cita medica">
+	<node_order><![CDATA[101]]></node_order>
+	<externalid><![CDATA[4976]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>Se verifica que el sistema agende la cita configurada por el usuario</p>]]></summary>
+	<preconditions><![CDATA[<p>_ El usuario debe estar afiliado al Plan Complementario y el estado de afiliaci&oacute;n debe ser Activo<br />
+_ El usuario debe tener asignado un m&eacute;dico personal</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>Ingresar a transar digitando usuario y contrase&ntilde;a</p>]]></actions>
+	<expectedresults><![CDATA[<p>Transar permite el acceso al sistema</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la pesta&ntilde;a de Salud</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra las opciones de Salud</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Solicitar citas m&eacute;dicas</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida que el usuario esta afiliado al Plan complementario, con estado Activo y muestra el m&oacute;dulo de bienvenida para solicitar las citas m&eacute;dicas</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la opci&oacute;n Cita para cotizante</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra la pantalla &iquest;C&oacute;mo desea buscar la cita medica?</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>Despliega la lista y selecciona la especialidad de la cual requiere la cita, no seleccionar la especialidad Urolog&iacute;a 1A vez consulta</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida si la especialidad seleccionada corresponde a un servicio de primer nivel para plan complementario, identifica que el usuario cuenta con m&eacute;dico personal asignado, si la especialidad del servicio es igual a la especialidad del medico personal, el sistema muestra el siguiente mensaje: &quot;Se&ntilde;or usuario, el m&eacute;dico personal que tiene asignado es NNNNNNN = Nombre AAAAAAA = apellidos, que atiende = ESPECILIDAD en la unidad de servicio XXXXXX XXXXXX.<br />
+&iquest;Desea solicitar cita m&eacute;dica con su m&eacute;dico personal?&rdquo;. Se muestran los botones Solicitar y Cancelar.</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Solicitar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema cierra la ventana emergente, se ubica en la pantalla Como desea buscar su&nbsp;cita m&eacute;dica, deja por defecto la especialidad seleccionada por el usuario y bloquea la secci&oacute;n Especialidad de la cual requiere la cita.</p>
+<p>Habilita el campo fecha&nbsp;y bloquea la secci&oacute;n Otras opciones de b&uacute;squeda y habilita el bot&oacute;n Continuar.</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la fecha en la cual se quiere la cita medica y pulsar el bot&oacute;n Continuar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema busca disponibilidad de agenda con el m&eacute;dico personal y muestra la disponibilidad de horario</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[8]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la hora en la cual se quiere asistir a la cita, pulsando en la opci&oacute;n solicitar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra un mensaje con la informaci&oacute;n de la cita para que el usuario confirme, se muestran las opciones Cancelar y Confirmar solicitud de cita</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[9]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Confirmar solicitud de cita</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema agenda la cita m&eacute;dica</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+</testsuite><testsuite name="Flujos Alternos" >
+<node_order><![CDATA[102]]></node_order>
+<details><![CDATA[<p>Verificar el funcionamiento del sistema cuando tiene un comportamiento diferente al esperado</p>]]> 
+</details>
+<testcase internalid="589996" name="Usuario con PC Inactivo">
+	<node_order><![CDATA[102]]></node_order>
+	<externalid><![CDATA[4978]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>Verificar el comportamiento cuando el usuario logueado&nbsp;tiene plan complementario&nbsp;en estado inactivo</p>]]></summary>
+	<preconditions><![CDATA[<p>_ El usuario debe tener&nbsp;Plan Complementario en&nbsp;estado de afiliaci&oacute;n Inactivo<br />
+_ El usuario debe tener asignado un m&eacute;dico personal</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>Ingresar a transar digitando usuario y contrase&ntilde;a</p>]]></actions>
+	<expectedresults><![CDATA[<p>Transar permite el acceso al sistema</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la pesta&ntilde;a de Salud</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra las opciones de Salud</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Solicitar citas m&eacute;dicas</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida que el usuario&nbsp;tiene&nbsp;Plan complementario, con estado Inactivo y muestra el m&oacute;dulo de bienvenida para solicitar las citas m&eacute;dicas</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la opci&oacute;n Cita para cotizante</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra la pantalla &iquest;C&oacute;mo desea buscar la cita medica?</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>Despliega la lista y selecciona la especialidad de la cual requiere la cita</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema ingresa el dato de la especialidad en el campo.</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la fecha en la cual se quiere la cita medica y marca el check del campo M&eacute;dico tratante</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra el nombre del medico tratante.</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[<p>Pulsar en el bot&oacute;n Continuar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra la agenda disponible del m&eacute;dico tratante, al lado de cada hora disponible se muestra la opci&oacute;n Solicitar</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[8]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la hora en la cual se quiere asistir a la cita, pulsando en la opci&oacute;n solicitar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra un mensaje con la informaci&oacute;n de la cita para que el usuario confirme, se muestran las opciones Cancelar y Confirmar solicitud de cita</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[9]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Confirmar solicitud de cita</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema agenda la cita m&eacute;dica</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="590008" name="Usuario no afiliado a PC">
+	<node_order><![CDATA[103]]></node_order>
+	<externalid><![CDATA[4979]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>Verificar el comportamiento cuando el usuario logueado&nbsp;no tiene plan complementario</p>]]></summary>
+	<preconditions><![CDATA[<p>_ El usuario no&nbsp;debe estar afiliado&nbsp;al&nbsp;Plan Complementario<br />
+_ El usuario debe tener asignado un m&eacute;dico personal</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>Ingresar a transar digitando usuario y contrase&ntilde;a</p>]]></actions>
+	<expectedresults><![CDATA[<p>Transar permite el acceso al sistema</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la pesta&ntilde;a de Salud</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra las opciones de Salud</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Solicitar citas m&eacute;dicas</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida que el usuario&nbsp;tiene&nbsp;Plan complementario, con estado Inactivo y muestra el m&oacute;dulo de bienvenida para solicitar las citas m&eacute;dicas</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la opci&oacute;n Cita para cotizante</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra la pantalla &iquest;C&oacute;mo desea buscar la cita medica?</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>Despliega la lista y selecciona la especialidad de la cual requiere la cita</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema ingresa el dato de la especialidad en el campo.</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la fecha en la cual se quiere la cita medica, marcar el check de m&eacute;dico tratante</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra el nombre del medico tratante</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[<p>Pulsar en el bot&oacute;n Continuar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra la agenda disponible del m&eacute;dico, al lado de cada registro se muestra la opci&oacute;n Solicitar</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[8]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la hora en la cual se quiere asistir a la cita, pulsando en la opci&oacute;n solicitar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra un mensaje con la informaci&oacute;n de la cita para que el usuario confirme, se muestran las opciones Cancelar y Confirmar solicitud de cita</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[9]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Confirmar solicitud de cita</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema agenda la cita m&eacute;dica</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="590020" name="Servicio diferente a los de primer nivel">
+	<node_order><![CDATA[104]]></node_order>
+	<externalid><![CDATA[4980]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>Se verifica que el sistema agende la cita cuando este selecciona una especialidad diferente a un servicio de primer nivel</p>]]></summary>
+	<preconditions><![CDATA[<p>_ El usuario debe estar afiliado al Plan Complementario y el estado de afiliaci&oacute;n debe ser Activo<br />
+_ El usuario debe tener asignado un m&eacute;dico personal</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>Ingresar a transar digitando usuario y contrase&ntilde;a</p>]]></actions>
+	<expectedresults><![CDATA[<p>Transar permite el acceso al sistema</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la pesta&ntilde;a de Salud</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra las opciones de Salud</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Solicitar citas m&eacute;dicas</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida que el usuario esta afiliado al Plan complementario, con estado Activo y muestra el m&oacute;dulo de bienvenida para solicitar las citas m&eacute;dicas</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la opci&oacute;n Cita para cotizante</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra la pantalla &iquest;C&oacute;mo desea buscar la cita medica?</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>Despliega la lista y selecciona&nbsp;una especialidad diferente a los servicios de primer nivel</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema identifica que se selecciona una especialidad diferente a los servicios de primer nivel, deja al usuario en la pantalla Como desea buscar su cita m&eacute;dica, habilita los siguientes par&aacute;metros que se encuentran actualmente en la funcionalidad:</p>
+<p>_ Seleccione la especialidad de la cual requiere la cita<br />
+_ Seleccione la fecha en la que requiere ser atendido<br />
+_ Otras opciones de b&uacute;squeda</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la fecha en la cual se quiere la cita medica y pulsar en el check M&eacute;dico tratante</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra el nombre del m&eacute;dico tratante</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[<p>Pulsar en el bot&oacute;n Continuar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra la agenda disponible del m&eacute;dico, al lado de cada hora disponible se muestra la opci&oacute;n Solicitar</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[8]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la hora en la cual se quiere asistir a la cita, pulsando en la opci&oacute;n solicitar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra un mensaje con la informaci&oacute;n de la cita para que el usuario confirme, se muestran las opciones Cancelar y Confirmar solicitud de cita</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[9]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Confirmar solicitud de cita</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema agenda la cita m&eacute;dica</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="590032" name="Usuario sin médico personal">
+	<node_order><![CDATA[105]]></node_order>
+	<externalid><![CDATA[4981]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>Se verifica que el sistema agende la cita configurada por el usuario que no tiene medico tratante asignado</p>]]></summary>
+	<preconditions><![CDATA[<p>_ El usuario debe estar afiliado al Plan Complementario y el estado de afiliaci&oacute;n debe ser Activo<br />
+_ El usuario no debe tener asignado un m&eacute;dico personal</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>Ingresar a transar digitando usuario y contrase&ntilde;a</p>]]></actions>
+	<expectedresults><![CDATA[<p>Transar permite el acceso al sistema</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la pesta&ntilde;a de Salud</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra las opciones de Salud</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Solicitar citas m&eacute;dicas</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida que el usuario esta afiliado al Plan complementario, con estado Activo y muestra el m&oacute;dulo de bienvenida para solicitar las citas m&eacute;dicas</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la opci&oacute;n Cita para cotizante</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra la pantalla &iquest;C&oacute;mo desea buscar la cita medica?</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>Despliega la lista y selecciona la especialidad de la cual requiere la cita, la especialidad debe ser de primer nivel</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra el dato seleccionado en el campo Seleccione la especialidad de la cual requiere la cita</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la fecha en la cual se quiere la cita medica y pulsar el bot&oacute;n Continuar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema busca disponibilidad de agenda con el m&eacute;dico personal y muestra la disponibilidad de horario</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[<p>Marcar el check de la opci&oacute;n&nbsp;M&eacute;dico tratante</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra&nbsp;un mensaje indicando que el usuario no tiene m&eacute;dico tratante asignado</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[8]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Continuar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra la disponibilidad de horario para la cita m&eacute;dica en el d&iacute;a seleccionado por el usuario</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[9]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la hora en la cual se quiere asistir a la cita, pulsando en la opci&oacute;n solicitar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra un mensaje con la informaci&oacute;n de la cita para que el usuario confirme, se muestran las opciones Cancelar y Confirmar solicitud de cita</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[10]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Confirmar solicitud de cita</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema agenda la cita m&eacute;dica</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="590045" name="Medico personal y especialidad no coinciden">
+	<node_order><![CDATA[106]]></node_order>
+	<externalid><![CDATA[4982]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>Validar el funcionamiento del sistema cuando la especialidad seleccionada no coincide con el medico&nbsp;personal asignado</p>]]></summary>
+	<preconditions><![CDATA[<p>_ El usuario debe estar afiliado al servicio de Plan Complementario y el estado de afiliaci&oacute;n debe ser &ldquo;Activo&rdquo;<br />
+_ El usuario debe tener asignado un m&eacute;dico personal</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>Se ingresa usuario y&nbsp;contrase&ntilde;a para el ingreso al sistema</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema ingresa a Transar</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la pesta&ntilde;a de Salud</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra las opciones de Salud</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Solicitar citas m&eacute;dicas</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida que el usuario se encuentra Activo en el Plan Complementario, muestra la pantalla de bienvenida para solicitar citas m&eacute;dicas</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Cita para cotizante</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema ingresa a la pantalla Como desea buscar la cita m&eacute;dica</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>Seleccionar una especialidad de primer nivel&nbsp;del campo Seleccione la especialidad de la cual requiere la cita</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida que la especialidad seleccionada sea de primer nivel para plan complementario, valida que el usuario cuenta con m&eacute;dico personal asignado.</p>
+<p>El sistema identifica que la especialidad seleccionada no es igual a la especialidad del m&eacute;dico personal y muestra el mensaje: &ldquo;Se&ntilde;or usuario, el m&eacute;dico personal que tiene asignado es NNNNNNN = Nombre&nbsp;&nbsp; AAAAAAA = apellidos, que atiende = ESPECILIDAD, en la unidad de servicio XXXXXX XXXXXX.<br />
+&iquest;Desea solicitar cita m&eacute;dica con su m&eacute;dico personal NNNNNNN = Nombre&nbsp;&nbsp; AAAAAAA = apellidos?&rdquo;, Tenga en cuenta que la cita va a quedar programada para XXXXXX (Primer servicio de la lista &ldquo;Seleccione la especialidad de la cual requiere la cita&rdquo; asociada a la especialidad del m&eacute;dico personal asignado), se muestran los botones Solicitar y Cancelar</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Solicitar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema cierra la ventana emergente, cambia autom&aacute;ticamente el CUPS del servicio seleccionado por el usuario en el campo Seleccione la especialidad de la cual requiere la cita y deja por defecto el primer servicio de la lista cuya especialidad asociada coincida con la especialidad del m&eacute;dico personal</p>
+<p>El sistema bloquea la secci&oacute;n Especialidad de la cual requiere la cita, bloquea la secci&oacute;n Otras opciones de b&uacute;squeda y habilita el campo fecha para solicitar la cita m&eacute;dica</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[<p>Seleccionar en el calendario la fecha en la cual se quiere agendar la cita m&eacute;dica y pulsa el bot&oacute;n Continuar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema realiza la consulta de la agenda del m&eacute;dico y muestra la disponibilidad de horario al usuario</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[8]]></step_number>
+	<actions><![CDATA[<p>Seleccionar el horario en el cual se quiere asistir a la cita</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra un mensaje con el detalle de la cita, se muestran los botones Cancelar y Confirmar solicitud de cita</p>
+<p>El sistema asigna la cita</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="590055" name="Agendar cita medica_Cancelar">
+	<node_order><![CDATA[107]]></node_order>
+	<externalid><![CDATA[4983]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>Se verifica que cuando el usuario cancele la asignaci&oacute;n de cita, el sistema no la agende</p>]]></summary>
+	<preconditions><![CDATA[<p>_ El usuario debe estar afiliado al Plan Complementario y el estado de afiliaci&oacute;n debe ser Activo<br />
+_ El usuario debe tener asignado un m&eacute;dico personal</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>Ingresar a transar digitando usuario y contrase&ntilde;a</p>]]></actions>
+	<expectedresults><![CDATA[<p>Transar permite el acceso al sistema</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la pesta&ntilde;a de Salud</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra las opciones de Salud</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Solicitar citas m&eacute;dicas</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida que el usuario esta afiliado al Plan complementario, con estado Activo y muestra el m&oacute;dulo de bienvenida para solicitar las citas m&eacute;dicas</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la opci&oacute;n Cita para cotizante</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra la pantalla &iquest;C&oacute;mo desea buscar la cita medica?</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>Despliega la lista y selecciona la especialidad de la cual requiere la cita, no seleccionar la especialidad Urolog&iacute;a 1A vez consulta</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida si la especialidad seleccionada corresponde a un servicio de primer nivel para plan complementario, identifica que el usuario cuenta con m&eacute;dico personal asignado, si la especialidad del servicio es igual a la especialidad del medico personal, el sistema muestra el siguiente mensaje: &quot;Se&ntilde;or usuario, el m&eacute;dico personal que tiene asignado es NNNNNNN = Nombre AAAAAAA = apellidos, que atiende = ESPECILIDAD en la unidad de servicio XXXXXX XXXXXX.<br />
+&iquest;Desea solicitar cita m&eacute;dica con su m&eacute;dico personal?&rdquo;. Se muestran los botones Solicitar y Cancelar.</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Cancelar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema cierra la ventana emergente, valida que la especialidad asociada al servicio seleccionado es igual a la especialidad de su m&eacute;dico personal asignado; deja al usuario en la pantalla Como desea buscar su cita m&eacute;dica, cambia la etiqueta de M&eacute;dico tratante por la etiqueta de M&eacute;dico personal</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[<p>Seleccionar el check de M&eacute;dico Personal</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra el nombre del m&eacute;dico personal</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[8]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la fecha en la cual se quiere la cita medica y pulsar el bot&oacute;n Continuar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema busca disponibilidad de agenda con el m&eacute;dico personal y muestra la disponibilidad de horario</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[9]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la hora en la cual se quiere asistir a la cita, pulsando en la opci&oacute;n solicitar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra un mensaje con la informaci&oacute;n de la cita para que el usuario confirme, se muestran las opciones Cancelar y Confirmar solicitud de cita</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[10]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Confirmar solicitud de cita</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema agenda la cita m&eacute;dica</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="590066" name="Medico personal y especialidad no coinciden_Cancelar">
+	<node_order><![CDATA[108]]></node_order>
+	<externalid><![CDATA[4984]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>Validar el funcionamiento del sistema cuando se pulsa el bot&oacute;n el Cancelar y se agende la cita</p>]]></summary>
+	<preconditions><![CDATA[<p>_ El usuario debe estar afiliado al servicio de Plan Complementario y el estado de afiliaci&oacute;n debe ser &ldquo;Activo&rdquo;<br />
+_ El usuario debe tener asignado un m&eacute;dico personal</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>Se ingresa usuario y&nbsp;contrase&ntilde;a para el ingreso al sistema</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema ingresa a Transar</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la pesta&ntilde;a de Salud</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra las opciones de Salud</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Solicitar citas m&eacute;dicas</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida que el usuario se encuentra Activo en el Plan Complementario, muestra la pantalla de bienvenida para solicitar citas m&eacute;dicas</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Cita para cotizante</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema ingresa a la pantalla Como desea buscar la cita m&eacute;dica</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>Seleccionar una especialidad de primer nivel&nbsp;del campo Seleccione la especialidad de la cual requiere la cita</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida que la especialidad seleccionada sea de primer nivel para plan complementario, valida que el usuario cuenta con m&eacute;dico personal asignado.</p>
+<p>El sistema identifica que la especialidad seleccionada no es igual a la especialidad del m&eacute;dico personal y muestra el mensaje: &ldquo;Se&ntilde;or usuario, el m&eacute;dico personal que tiene asignado es NNNNNNN = Nombre&nbsp;&nbsp; AAAAAAA = apellidos, que atiende = ESPECILIDAD, en la unidad de servicio XXXXXX XXXXXX.<br />
+&iquest;Desea solicitar cita m&eacute;dica con su m&eacute;dico personal NNNNNNN = Nombre&nbsp;&nbsp; AAAAAAA = apellidos?&rdquo;, Tenga en cuenta que la cita va a quedar programada para XXXXXX (Primer servicio de la lista &ldquo;Seleccione la especialidad de la cual requiere la cita&rdquo; asociada a la especialidad del m&eacute;dico personal asignado), se muestran los botones Solicitar y Cancelar</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Cancelar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida que el servicio seleccionado por el&nbsp;usuario es diferente a la especialidad de su m&eacute;dico personal, deja al usuario en la pantalla Como desea buscar su cita m&eacute;dica</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la especialidad de la cual se quiere la cita m&eacute;dica</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra el dato seleccionado en el campo Seleccione la especialidad de la cual requiere la cita</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[8]]></step_number>
+	<actions><![CDATA[<p>Seleccionar en el calendario la fecha en la cual se quiere agendar la cita m&eacute;dica y pulsa el bot&oacute;n Continuar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema realiza la consulta de la agenda del m&eacute;dico y muestra la disponibilidad de horario al usuario</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[9]]></step_number>
+	<actions><![CDATA[<p>Seleccionar el horario en el cual se quiere asistir a la cita</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra un mensaje con el detalle de la cita, se muestran los botones Cancelar y Confirmar solicitud de cita</p>
+<p>El sistema asigna la cita</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="590078" name="Agendar cita medica_Cancelar_No seleccionar médico">
+	<node_order><![CDATA[109]]></node_order>
+	<externalid><![CDATA[4985]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>Se verifica que cuando el usuario pulse en el bot&oacute;n Cancelar y no seleccione m&eacute;dico personal el sistema agende la cita</p>]]></summary>
+	<preconditions><![CDATA[<p>_ El usuario debe estar afiliado al Plan Complementario y el estado de afiliaci&oacute;n debe ser Activo<br />
+_ El usuario debe tener asignado un m&eacute;dico personal</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>Ingresar a transar digitando usuario y contrase&ntilde;a</p>]]></actions>
+	<expectedresults><![CDATA[<p>Transar permite el acceso al sistema</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la pesta&ntilde;a de Salud</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra las opciones de Salud</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Solicitar citas m&eacute;dicas</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida que el usuario esta afiliado al Plan complementario, con estado Activo y muestra el m&oacute;dulo de bienvenida para solicitar las citas m&eacute;dicas</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la opci&oacute;n Cita para cotizante</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra la pantalla &iquest;C&oacute;mo desea buscar la cita medica?</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>Despliega la lista y selecciona la especialidad de la cual requiere la cita, no seleccionar la especialidad Urolog&iacute;a 1A vez consulta</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida si la especialidad seleccionada corresponde a un servicio de primer nivel para plan complementario, identifica que el usuario cuenta con m&eacute;dico personal asignado, si la especialidad del servicio es igual a la especialidad del medico personal, el sistema muestra el siguiente mensaje: &quot;Se&ntilde;or usuario, el m&eacute;dico personal que tiene asignado es NNNNNNN = Nombre AAAAAAA = apellidos, que atiende = ESPECILIDAD en la unidad de servicio XXXXXX XXXXXX.<br />
+&iquest;Desea solicitar cita m&eacute;dica con su m&eacute;dico personal?&rdquo;. Se muestran los botones Solicitar y Cancelar.</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Cancelar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema cierra la ventana emergente, valida que la especialidad asociada al servicio seleccionado es igual a la especialidad de su m&eacute;dico personal asignado; deja al usuario en la pantalla Como desea buscar su cita m&eacute;dica, cambia la etiqueta de M&eacute;dico tratante por la etiqueta de M&eacute;dico personal</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la fecha en la cual se quiere la cita medica, no&nbsp;marcar el&nbsp;check de M&eacute;dico personal, si se desea realizar la&nbsp;b&uacute;squeda por ubicaci&oacute;n&nbsp;y pulsar el bot&oacute;n Continuar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema busca disponibilidad de agenda con el m&eacute;dico personal y muestra la disponibilidad de horario</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[8]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la hora en la cual se quiere asistir a la cita, pulsando en la opci&oacute;n solicitar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra un mensaje con la informaci&oacute;n de la cita para que el usuario confirme, se muestran las opciones Cancelar y Confirmar solicitud de cita</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[9]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Confirmar solicitud de cita</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema agenda la cita m&eacute;dica</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="590091" name="Agendar cita medica_Beneficiario">
+	<node_order><![CDATA[110]]></node_order>
+	<externalid><![CDATA[4986]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>Se verifica que el sistema agende la cita configurada por el usuario para uno de sus beneficiarios</p>]]></summary>
+	<preconditions><![CDATA[<p>_ El usuario cotizante&nbsp;debe estar afiliado al Plan Complementario y el estado de afiliaci&oacute;n debe ser Activo<br />
+_ El usuario debe tener asignado un m&eacute;dico personal</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>Ingresar a transar digitando usuario y contrase&ntilde;a</p>]]></actions>
+	<expectedresults><![CDATA[<p>Transar permite el acceso al sistema</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la pesta&ntilde;a de Salud</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra las opciones de Salud</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Solicitar citas m&eacute;dicas</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida que el usuario esta afiliado al Plan complementario, con estado Activo y muestra el m&oacute;dulo de bienvenida para solicitar las citas m&eacute;dicas</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la opci&oacute;n Cita para beneficiario</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra el listado de los beneficiarios asociados al cotizante</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>Pulsar sobre el link Solicitar del beneficiario al cual se le quiere pedir la cita m&eacute;dica</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra la pantalla &iquest;C&oacute;mo desea buscar la cita medica?</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>Despliega la lista y seleccionar&nbsp;una especialidad de primer nivel, de la cual requiere la cita, no seleccionar la especialidad Urolog&iacute;a 1A vez consulta</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida si la especialidad seleccionada corresponde a un servicio de primer nivel para plan complementario, identifica que el usuario cuenta con m&eacute;dico personal asignado, si la especialidad del servicio es igual a la especialidad del medico personal, el sistema muestra el siguiente mensaje: &quot;Se&ntilde;or usuario, el m&eacute;dico personal que tiene asignado es NNNNNNN = Nombre AAAAAAA = apellidos, que atiende = ESPECILIDAD en la unidad de servicio XXXXXX XXXXXX.<br />
+&iquest;Desea solicitar cita m&eacute;dica con su m&eacute;dico personal?&rdquo;. Se muestran los botones Solicitar y Cancelar.</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Solicitar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema cierra la ventana emergente, se ubica en la pantalla Como desea buscar su&nbsp;cita m&eacute;dica, deja por defecto la especialidad seleccionada por el usuario y bloquea la secci&oacute;n Especialidad de la cual requiere la cita.</p>
+<p>Habilita el campo fecha&nbsp;y bloquea la secci&oacute;n Otras opciones de b&uacute;squeda y habilita el bot&oacute;n Continuar.</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[8]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la fecha en la cual se quiere la cita medica y pulsar el bot&oacute;n Continuar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema busca disponibilidad de agenda con el m&eacute;dico personal y muestra la disponibilidad de horario</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[9]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la hora en la cual se quiere asistir a la cita, pulsando en la opci&oacute;n solicitar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra un mensaje con la informaci&oacute;n de la cita para que el usuario confirme, se muestran las opciones Cancelar y Confirmar solicitud de cita</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[10]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Confirmar solicitud de cita</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema agenda la cita m&eacute;dica</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="590103" name="Agendar cita medica Acueducto">
+	<node_order><![CDATA[111]]></node_order>
+	<externalid><![CDATA[4987]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>Se verifica que el sistema agende la cita configurada por el usuario para el programa de acueducto</p>]]></summary>
+	<preconditions><![CDATA[<p>_ El usuario debe estar afiliado al Plan Complementario y el estado de afiliaci&oacute;n debe ser Activo<br />
+&nbsp;</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>Ingresar a transar digitando usuario y contrase&ntilde;a</p>]]></actions>
+	<expectedresults><![CDATA[<p>Transar permite el acceso al sistema</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la pesta&ntilde;a de Salud</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra las opciones de Salud</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Solicitar citas m&eacute;dicas</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida que el usuario esta afiliado al Plan complementario, con estado Activo y muestra el m&oacute;dulo de bienvenida para solicitar las citas m&eacute;dicas</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la opci&oacute;n Cita para cotizante</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra la pantalla &iquest;C&oacute;mo desea buscar la cita medica?</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>Despliega la lista y selecciona la especialidad de la cual requiere la cita</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra la opci&oacute;n seleccionada en el campo Seleccione la especialidad de la cual requiere la cita</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la fecha en la cual se quiere la cita medica y realiza la b&uacute;squeda por sede</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra las sedes exclusivas de acueducto en el combo box &quot;Sede Compensar&quot;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[<p>Seleccionar una sede y pulsar en el bot&oacute;n Continuar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra la disponibilidad de citas</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[8]]></step_number>
+	<actions><![CDATA[<p>Seleccionar la hora en la cual se quiere asistir a la cita, pulsando en la opci&oacute;n solicitar</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra un mensaje con la informaci&oacute;n de la cita para que el usuario confirme, se muestran las opciones Cancelar y Confirmar solicitud de cita</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[9]]></step_number>
+	<actions><![CDATA[<p>Pulsar en la opci&oacute;n Confirmar solicitud de cita</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema agenda la cita m&eacute;dica</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+</testsuite></testsuite>

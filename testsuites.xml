@@ -1,0 +1,1349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Transar_026_AlineacionMedico personal PC_V1.4" >
+<node_order><![CDATA[121]]></node_order>
+<details><![CDATA[<p>&nbsp;<span style="font-family: Arial, sans-serif; font-size: 10pt; text-align: justify;">Ajustar la funcionalidad de solicitar citas m&eacute;dicas, permitiendo visualizar al usuario cu&aacute;l es el m&eacute;dico personal asignado y ofrecerle la posibilidad de continuar el proceso de solicitud de cita con el m&eacute;dico personal Asignado.</span></p>
+<p class="MsoNormal" style="margin-left:20.25pt;text-align:justify"><span lang="ES" style="font-size:10.0pt;&#10;font-family:&quot;Arial&quot;,sans-serif"><o:p></o:p></span></p>]]> 
+</details>
+<testcase internalid="590215" name="FB - Agenda cita con médico personal Cotizante Sin Ben">
+	<node_order><![CDATA[0]]></node_order>
+	<externalid><![CDATA[4988]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>El usuario afiliado a Plan Complementario (PC) puede realizar el proceso de agendamiento de cita con su m&eacute;dico personal a trav&eacute;s de la plataforma virtual de transacciones en l&iacute;nea.</p>]]></summary>
+	<preconditions><![CDATA[<p>&nbsp;</p>
+<p>&bull;	El usuario debe estar afiliado al servicio de Plan Complementario y el estado de afiliaci&oacute;n debe ser &ldquo;Activo&rdquo;<br />
+&bull;	El usuario debe tener asignado un m&eacute;dico personal<br />
+&bull;	El sistema permite realizar la solicitud de las citas m&eacute;dicas a trav&eacute;s de la plataforma de transacciones en l&iacute;nea. <br />
+&bull;	El sistema de transacciones en l&iacute;nea debe estar habilitado en producci&oacute;n.<br />
+&bull;	El sistema debe tener disponibilidad de agenda</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>El usuario accede a la aplicaci&oacute;n transacciones en l&iacute;nea ingresando sus respectivas credenciales (usuario y contrase&ntilde;a)&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema le permite ingresar al sistema de manera correcta</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona en la parte superior del men&uacute; actual la pesta&ntilde;a &ldquo;<strong>Salud</strong>&rdquo;&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;Despliega las opciones del men&uacute;, tal como se describe en el documento &ldquo;<strong>SRS_SWPR57_Paquete4_V1 8</strong>&rdquo;.</p>
+<p>* Solicitar cita m&eacute;dica</p>
+<p>* Solicitar citas de promoci&oacute;n y prevenci&oacute;n</p>
+<p>* Consoltar, reubicar o cancelar citas</p>
+<p>* Hist&oacute;rico de citas</p>
+<p>&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona la opci&oacute;n del men&uacute; actual &ldquo;<strong>Solicitar Citas M&eacute;dicas</strong>&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema verifica si el usuario logueado cuenta con el servicio de Plan complementario (PC) y se encuentra en estado Activo</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona de la lista desplegable &ldquo;<strong>Seleccione la especialidad de la cual requiere la cita:</strong>&quot;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema valida si la especialidad seleccionada por el usuario es un servicio de primer nivel para plan complementario seg&uacute;n parametrizaci&oacute;n existente en <strong>SSAS</strong></p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida: <br />
+* Si la especialidad seleccionada por el usuario es un servicio de primer nivel para plan complementario seg&uacute;n parametrizaci&oacute;n existente en SSAS. <strong>FA2</strong><br />
+* Identifica que el usuario cuenta con m&eacute;dico personal asignado. <strong>FA3</strong>.<br />
+* Si la especialidad del servicio seleccionado es igual a la especialidad del m&eacute;dico personal. <strong>FA4</strong><br />
+&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[8]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;Si las validaciones anteriores se cumplen, el sistema presenta el siguiente mensaje en una ventana emergente</p>
+<p>&ldquo;<strong>Se&ntilde;or usuario, el m&eacute;dico personal que tiene asignado es NNNNNNN = Nombre   AAAAAAA = apellidos, que atiende = ESPECILIDAD en la unidad de servicio XXXXXX XXXXXX.<br />
+&iquest;Desea solicitar cita m&eacute;dica con su m&eacute;dico personal?</strong>&rdquo;.</p>
+<p>Este mensaje debe estar acompa&ntilde;ado del bot&oacute;n &ldquo;<strong>Solicitar</strong>&rdquo; y &ldquo;<strong>Cancelar</strong>&rdquo;, para confirmar o rechazar la solicitud seg&uacute;n se requiera.</p>
+<p><br />
+Ejemplo:</p>
+<p>Se&ntilde;or usuario, el m&eacute;dico personal que tiene asignado es Andr&eacute;s Monsalve, que atiende Medicina Familiar en la unidad de servicio Cll 26.<br />
+&iquest;Desea solicitar cita con su m&eacute;dico personal? </p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[9]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona el bot&oacute;n &ldquo;<strong>Solicitar</strong>&rdquo; del mensaje que se despleg&oacute; en la ventana emergente en el punto anterior <strong>FA5</strong></p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema cierra la ventana emergente</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[10]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema deja ubicado al usuario en la pantalla &ldquo;<strong>Como desea buscar su cita m&eacute;dica</strong>&rdquo;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[11]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema deja por defecto la especialidad que hab&iacute;a seleccionado el usuario y Bloquea la secci&oacute;n &ldquo;<strong>Especialidad de la cual requiere la cita</strong>&rdquo;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[12]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>El sistema habilita el par&aacute;metro del campo fecha y Bloquea la secci&oacute;n de &ldquo;<strong>Otras opciones de b&uacute;squeda</strong>&rdquo;, y habilita el bot&oacute;n &ldquo;<strong>continuar</strong>&rdquo;&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[13]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona la Fecha en la que desea solicitar la cita m&eacute;dica y da clic en el bot&oacute;n Continuar para seguir con el proceso de b&uacute;squeda de disponibilidad de agenda con el m&eacute;dico</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema realiza la b&uacute;squeda de disponibilidad de agenda con el m&eacute;dico personal</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[14]]></step_number>
+	<actions><![CDATA[<p>El usuario continua con el proceso de asignaci&oacute;n de citas como se describe en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema permite finalizar el agendamiento correctamente</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="590231" name="FB - Agenda cita con médico personal Cotizante Con Ben">
+	<node_order><![CDATA[1]]></node_order>
+	<externalid><![CDATA[4989]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>El usuario afiliado a Plan Complementario (PC) puede realizar el proceso de agendamiento de cita con su m&eacute;dico personal a trav&eacute;s de la plataforma virtual de transacciones en l&iacute;nea.</p>]]></summary>
+	<preconditions><![CDATA[<p>&nbsp;</p>
+<p>&bull;	El usuario debe estar afiliado al servicio de Plan Complementario y el estado de afiliaci&oacute;n debe ser &ldquo;Activo&rdquo;<br />
+&bull;	El usuario debe tener asignado un m&eacute;dico personal<br />
+&bull;	El sistema permite realizar la solicitud de las citas m&eacute;dicas a trav&eacute;s de la plataforma de transacciones en l&iacute;nea. <br />
+&bull;	El sistema de transacciones en l&iacute;nea debe estar habilitado en producci&oacute;n.<br />
+&bull;	El sistema debe tener disponibilidad de agenda</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>El usuario accede a la aplicaci&oacute;n transacciones en l&iacute;nea ingresando sus respectivas credenciales (usuario y contrase&ntilde;a)&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema le permite ingresar al sistema de manera correcta</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona en la parte superior del men&uacute; actual la pesta&ntilde;a &ldquo;<strong>Salud</strong>&rdquo;&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;Despliega las opciones del men&uacute;, tal como se describe en el documento &ldquo;<strong>SRS_SWPR57_Paquete4_V1 8</strong>&rdquo;.</p>
+<p>* Solicitar cita m&eacute;dica</p>
+<p>* Solicitar citas de promoci&oacute;n y prevenci&oacute;n</p>
+<p>* Consoltar, reubicar o cancelar citas</p>
+<p>* Hist&oacute;rico de citas</p>
+<p>&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona la opci&oacute;n del men&uacute; actual &ldquo;<strong>Solicitar Citas M&eacute;dicas</strong>&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema verifica si el usuario logueado cuenta con el servicio de Plan complementario (PC) y se encuentra en estado Activo</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>El usuario visualizar&aacute; el m&oacute;dulo de bienvenida para solicitud de citas m&eacute;dicas</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema presenta en pantalla la opci&oacute;n de seleccionar &ldquo;<strong>Para quien es la cita</strong>&rdquo; si es para un beneficiario o para el cotizante. (Funcionalidad actual tal como se describe en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;.)</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona la opci&oacute;n de solicitud de &ldquo;<strong>Cita para Cotizante</strong>&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema despliega la informaci&oacute;n para la solicitud de las citas m&eacute;dicas, dejando ubicado al usuario en la pantalla &ldquo;C&oacute;mo desea buscar la cita m&eacute;dica.  (Funcionalidad actual como se describe en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;.)</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona de la lista desplegable &ldquo;<strong>Seleccione la especialidad de la cual requiere la cita:</strong>&quot;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema valida si la especialidad seleccionada por el usuario es un servicio de primer nivel para plan complementario seg&uacute;n parametrizaci&oacute;n existente en <strong>SSAS</strong></p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida: <br />
+* Si la especialidad seleccionada por el usuario es un servicio de primer nivel para plan complementario seg&uacute;n parametrizaci&oacute;n existente en SSAS. <strong>FA2</strong><br />
+* Identifica que el usuario cuenta con m&eacute;dico personal asignado. <strong>FA3</strong>.<br />
+* Si la especialidad del servicio seleccionado es igual a la especialidad del m&eacute;dico personal. <strong>FA4</strong><br />
+&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[8]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;Si las validaciones anteriores se cumplen, el sistema presenta el siguiente mensaje en una ventana emergente</p>
+<p>&ldquo;<strong>Se&ntilde;or usuario, el m&eacute;dico personal que tiene asignado es NNNNNNN = Nombre   AAAAAAA = apellidos, que atiende = ESPECILIDAD en la unidad de servicio XXXXXX XXXXXX.<br />
+&iquest;Desea solicitar cita m&eacute;dica con su m&eacute;dico personal?</strong>&rdquo;.</p>
+<p>Este mensaje debe estar acompa&ntilde;ado del bot&oacute;n &ldquo;<strong>Solicitar</strong>&rdquo; y &ldquo;<strong>Cancelar</strong>&rdquo;, para confirmar o rechazar la solicitud seg&uacute;n se requiera.</p>
+<p><br />
+Ejemplo:</p>
+<p>Se&ntilde;or usuario, el m&eacute;dico personal que tiene asignado es Andr&eacute;s Monsalve, que atiende Medicina Familiar en la unidad de servicio Cll 26.<br />
+&iquest;Desea solicitar cita con su m&eacute;dico personal? </p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[9]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona el bot&oacute;n &ldquo;<strong>Solicitar</strong>&rdquo; del mensaje que se despleg&oacute; en la ventana emergente en el punto anterior <strong>FA5</strong></p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema cierra la ventana emergente</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[10]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema deja ubicado al usuario en la pantalla &ldquo;<strong>Como desea buscar su cita m&eacute;dica</strong>&rdquo;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[11]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema deja por defecto la especialidad que hab&iacute;a seleccionado el usuario y Bloquea la secci&oacute;n &ldquo;<strong>Especialidad de la cual requiere la cita</strong>&rdquo;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[12]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>El sistema habilita el par&aacute;metro del campo fecha y Bloquea la secci&oacute;n de &ldquo;<strong>Otras opciones de b&uacute;squeda</strong>&rdquo;, y habilita el bot&oacute;n &ldquo;<strong>continuar</strong>&rdquo;&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[13]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona la Fecha en la que desea solicitar la cita m&eacute;dica y da clic en el bot&oacute;n Continuar para seguir con el proceso de b&uacute;squeda de disponibilidad de agenda con el m&eacute;dico</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema realiza la b&uacute;squeda de disponibilidad de agenda con el m&eacute;dico personal</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[14]]></step_number>
+	<actions><![CDATA[<p>El usuario continua con el proceso de asignaci&oacute;n de citas como se describe en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema permite finalizar el agendamiento correctamente</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="590374" name="FB - Agenda cita con médico personal Beneficiario 1">
+	<node_order><![CDATA[2]]></node_order>
+	<externalid><![CDATA[4998]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>El usuario afiliado a Plan Complementario (PC) puede realizar el proceso de agendamiento de cita con su m&eacute;dico personal a trav&eacute;s de la plataforma virtual de transacciones en l&iacute;nea.</p>]]></summary>
+	<preconditions><![CDATA[<p>&nbsp;</p>
+<p>&bull;	El usuario debe estar afiliado al servicio de Plan Complementario y el estado de afiliaci&oacute;n debe ser &ldquo;Activo&rdquo;<br />
+&bull;	El usuario debe tener asignado un m&eacute;dico personal<br />
+&bull;	El sistema permite realizar la solicitud de las citas m&eacute;dicas a trav&eacute;s de la plataforma de transacciones en l&iacute;nea. <br />
+&bull;	El sistema de transacciones en l&iacute;nea debe estar habilitado en producci&oacute;n.<br />
+&bull;	El sistema debe tener disponibilidad de agenda</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>El usuario accede a la aplicaci&oacute;n transacciones en l&iacute;nea ingresando sus respectivas credenciales (usuario y contrase&ntilde;a)&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema le permite ingresar al sistema de manera correcta</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona en la parte superior del men&uacute; actual la pesta&ntilde;a &ldquo;<strong>Salud</strong>&rdquo;&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;Despliega las opciones del men&uacute;, tal como se describe en el documento &ldquo;<strong>SRS_SWPR57_Paquete4_V1 8</strong>&rdquo;.</p>
+<p>* Solicitar cita m&eacute;dica</p>
+<p>* Solicitar citas de promoci&oacute;n y prevenci&oacute;n</p>
+<p>* Consoltar, reubicar o cancelar citas</p>
+<p>* Hist&oacute;rico de citas</p>
+<p>&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona la opci&oacute;n del men&uacute; actual &ldquo;<strong>Solicitar Citas M&eacute;dicas</strong>&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema verifica si el usuario logueado cuenta con el servicio de Plan complementario (PC) y se encuentra en estado Activo</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>El usuario visualizar&aacute; el m&oacute;dulo de bienvenida para solicitud de citas m&eacute;dicas</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema presenta en pantalla la opci&oacute;n de seleccionar &ldquo;<strong>Para quien es la cita</strong>&rdquo; si es para un beneficiario o para el cotizante. (Funcionalidad actual tal como se describe en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;.)</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona la opci&oacute;n de solicitud de &ldquo;<strong>Cita para Cotizante</strong>&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema despliega la informaci&oacute;n para la solicitud de las citas m&eacute;dicas, dejando ubicado al usuario en la pantalla &ldquo;C&oacute;mo desea buscar la cita m&eacute;dica.  (Funcionalidad actual como se describe en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;.)</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona de la lista desplegable &ldquo;<strong>Seleccione la especialidad de la cual requiere la cita:</strong>&quot;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema valida si la especialidad seleccionada por el usuario es un servicio de primer nivel para plan complementario seg&uacute;n parametrizaci&oacute;n existente en <strong>SSAS</strong></p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida: <br />
+* Si la especialidad seleccionada por el usuario es un servicio de primer nivel para plan complementario seg&uacute;n parametrizaci&oacute;n existente en SSAS. <strong>FA2</strong><br />
+* Identifica que el usuario cuenta con m&eacute;dico personal asignado. <strong>FA3</strong>.<br />
+* Si la especialidad del servicio seleccionado es igual a la especialidad del m&eacute;dico personal. <strong>FA4</strong><br />
+&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[8]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;Si las validaciones anteriores se cumplen, el sistema presenta el siguiente mensaje en una ventana emergente</p>
+<p>&ldquo;<strong>Se&ntilde;or usuario, el m&eacute;dico personal que tiene asignado es NNNNNNN = Nombre   AAAAAAA = apellidos, que atiende = ESPECILIDAD en la unidad de servicio XXXXXX XXXXXX.<br />
+&iquest;Desea solicitar cita m&eacute;dica con su m&eacute;dico personal?</strong>&rdquo;.</p>
+<p>Este mensaje debe estar acompa&ntilde;ado del bot&oacute;n &ldquo;<strong>Solicitar</strong>&rdquo; y &ldquo;<strong>Cancelar</strong>&rdquo;, para confirmar o rechazar la solicitud seg&uacute;n se requiera.</p>
+<p><br />
+Ejemplo:</p>
+<p>Se&ntilde;or usuario, el m&eacute;dico personal que tiene asignado es Andr&eacute;s Monsalve, que atiende Medicina Familiar en la unidad de servicio Cll 26.<br />
+&iquest;Desea solicitar cita con su m&eacute;dico personal? </p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[9]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona el bot&oacute;n &ldquo;<strong>Solicitar</strong>&rdquo; del mensaje que se despleg&oacute; en la ventana emergente en el punto anterior <strong>FA5</strong></p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema cierra la ventana emergente</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[10]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema deja ubicado al usuario en la pantalla &ldquo;<strong>Como desea buscar su cita m&eacute;dica</strong>&rdquo;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[11]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema deja por defecto la especialidad que hab&iacute;a seleccionado el usuario y Bloquea la secci&oacute;n &ldquo;<strong>Especialidad de la cual requiere la cita</strong>&rdquo;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[12]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>El sistema habilita el par&aacute;metro del campo fecha y Bloquea la secci&oacute;n de &ldquo;<strong>Otras opciones de b&uacute;squeda</strong>&rdquo;, y habilita el bot&oacute;n &ldquo;<strong>continuar</strong>&rdquo;&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[13]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona la Fecha en la que desea solicitar la cita m&eacute;dica y da clic en el bot&oacute;n Continuar para seguir con el proceso de b&uacute;squeda de disponibilidad de agenda con el m&eacute;dico</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema realiza la b&uacute;squeda de disponibilidad de agenda con el m&eacute;dico personal</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[14]]></step_number>
+	<actions><![CDATA[<p>El usuario continua con el proceso de asignaci&oacute;n de citas como se describe en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema permite finalizar el agendamiento correctamente</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="590263" name="FA1 - Usuario No tiene activo el servicio de plan complementario (PC)">
+	<node_order><![CDATA[3]]></node_order>
+	<externalid><![CDATA[4991]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>El usuario afiliado a Plan Complementario (PC) puede realizar el proceso de agendamiento de cita con su m&eacute;dico personal a trav&eacute;s de la plataforma virtual de transacciones en l&iacute;nea.</p>]]></summary>
+	<preconditions><![CDATA[<p>&nbsp;</p>
+<p>&bull;	El usuario debe estar afiliado al servicio de Plan Complementario y el estado de afiliaci&oacute;n debe ser &ldquo;Activo&rdquo;<br />
+&bull;	El usuario debe tener asignado un m&eacute;dico personal<br />
+&bull;	El sistema permite realizar la solicitud de las citas m&eacute;dicas a trav&eacute;s de la plataforma de transacciones en l&iacute;nea. <br />
+&bull;	El sistema de transacciones en l&iacute;nea debe estar habilitado en producci&oacute;n.<br />
+&bull;	El sistema debe tener disponibilidad de agenda</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>El usuario accede a la aplicaci&oacute;n transacciones en l&iacute;nea ingresando sus respectivas credenciales (usuario y contrase&ntilde;a)&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema le permite ingresar al sistema de manera correcta</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona en la parte superior del men&uacute; actual la pesta&ntilde;a &ldquo;<strong>Salud</strong>&rdquo;&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;Despliega las opciones del men&uacute;, tal como se describe en el documento &ldquo;<strong>SRS_SWPR57_Paquete4_V1 8</strong>&rdquo;.</p>
+<p>* Solicitar cita m&eacute;dica</p>
+<p>* Solicitar citas de promoci&oacute;n y prevenci&oacute;n</p>
+<p>* Consoltar, reubicar o cancelar citas</p>
+<p>* Hist&oacute;rico de citas</p>
+<p>&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona la opci&oacute;n del men&uacute; actual &ldquo;<strong>Solicitar Citas M&eacute;dicas</strong>&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema verifica si el usuario logueado cuenta con el servicio de Plan complementario (PC) y se encuentra en estado Activo</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema identifica que el usuario no tiene servicio de salud con plan complementario PC o se encuentra inactivo</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>El sisetema permite visualizar las opciones actuales en citas m&eacute;dicas para usuarios afiliados al POS. (Funcionalidad actual descrita en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;)</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>Fin de flujo alterno</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="590282" name="FA2 - Especialidad Seleccionada por el usuario diferente a los servicios del primer nivel ">
+	<node_order><![CDATA[4]]></node_order>
+	<externalid><![CDATA[4992]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>El usuario afiliado a Plan Complementario (PC) puede realizar el proceso de agendamiento de cita con su m&eacute;dico personal a trav&eacute;s de la plataforma virtual de transacciones en l&iacute;nea.</p>]]></summary>
+	<preconditions><![CDATA[<p>&nbsp;</p>
+<p>&bull;	El usuario debe estar afiliado al servicio de Plan Complementario y el estado de afiliaci&oacute;n debe ser &ldquo;Activo&rdquo;<br />
+&bull;	El usuario debe tener asignado un m&eacute;dico personal<br />
+&bull;	El sistema permite realizar la solicitud de las citas m&eacute;dicas a trav&eacute;s de la plataforma de transacciones en l&iacute;nea. <br />
+&bull;	El sistema de transacciones en l&iacute;nea debe estar habilitado en producci&oacute;n.<br />
+&bull;	El sistema debe tener disponibilidad de agenda</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>El usuario accede a la aplicaci&oacute;n transacciones en l&iacute;nea ingresando sus respectivas credenciales (usuario y contrase&ntilde;a)&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema le permite ingresar al sistema de manera correcta</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona en la parte superior del men&uacute; actual la pesta&ntilde;a &ldquo;<strong>Salud</strong>&rdquo;&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;Despliega las opciones del men&uacute;, tal como se describe en el documento &ldquo;<strong>SRS_SWPR57_Paquete4_V1 8</strong>&rdquo;.</p>
+<p>* Solicitar cita m&eacute;dica</p>
+<p>* Solicitar citas de promoci&oacute;n y prevenci&oacute;n</p>
+<p>* Consoltar, reubicar o cancelar citas</p>
+<p>* Hist&oacute;rico de citas</p>
+<p>&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona la opci&oacute;n del men&uacute; actual &ldquo;<strong>Solicitar Citas M&eacute;dicas</strong>&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema verifica si el usuario logueado cuenta con el servicio de Plan complementario (PC) y se encuentra en estado Activo</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>El usuario visualizar&aacute; el m&oacute;dulo de bienvenida para solicitud de citas m&eacute;dicas</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema presenta en pantalla la opci&oacute;n de seleccionar &ldquo;<strong>Para quien es la cita</strong>&rdquo; si es para un beneficiario o para el cotizante. (Funcionalidad actual tal como se describe en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;.)</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona la opci&oacute;n de solicitud de &ldquo;<strong>Cita para Beneficiario</strong>&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema despliega la informaci&oacute;n para la solicitud de las citas m&eacute;dicas, dejando ubicado al usuario en la pantalla &ldquo;C&oacute;mo desea buscar la cita m&eacute;dica.  (Funcionalidad actual como se describe en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;.)</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona de la lista desplegable &ldquo;<strong>Seleccione la especialidad de la cual requiere la cita:</strong>&quot;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema valida si la especialidad seleccionada por el usuario es un servicio de primer nivel para plan complementario seg&uacute;n parametrizaci&oacute;n existente en <strong>SSAS</strong></p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida: <br />
+* Si la especialidad seleccionada por el usuario es un servicio de primer nivel para plan complementario seg&uacute;n parametrizaci&oacute;n existente en SSAS. <strong>FA2</strong><br />
+* Identifica que el usuario cuenta con m&eacute;dico personal asignado. <strong>FA3</strong>.<br />
+* Si la especialidad del servicio seleccionado es igual a la especialidad del m&eacute;dico personal. <strong>FA4</strong><br />
+&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[8]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema&nbsp;Identifica de acuerdo a parametrizaci&oacute;n en <strong>SSAS</strong> que el usuario selecciona una especialidad diferente a los servicios del primer nivel</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[9]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>El sistema deja ubicado al usuario en la pantalla <strong>&ldquo;Como desea buscar su cita m&eacute;dica&rdquo;&nbsp;</strong></p>
+<p>Habilita los par&aacute;metros que se encuentran actualmente en la funcionalidad de citas m&eacute;dicas los cuales son los siguientes:</p>
+<p>1.	Selecciona la especialidad de la cual requiere la cita <br />
+2.	Seleccione la fecha en la que requiere ser atendido<br />
+3.	Otras opciones de b&uacute;squeda<strong><br />
+</strong></p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[10]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona los par&aacute;metros de b&uacute;squeda para continuar con el proceso de solicitud de citas m&eacute;dicas (Ver detalla caso uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1)</p>]]></actions>
+	<expectedresults><![CDATA[<p>Fin de flujo alterno</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="590301" name="FA3 - Usuario no tiene médico personal asignado">
+	<node_order><![CDATA[5]]></node_order>
+	<externalid><![CDATA[4993]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>El usuario afiliado a Plan Complementario (PC) puede realizar el proceso de agendamiento de cita con su m&eacute;dico personal a trav&eacute;s de la plataforma virtual de transacciones en l&iacute;nea.</p>]]></summary>
+	<preconditions><![CDATA[<p>&nbsp;</p>
+<p>&bull;	El usuario debe estar afiliado al servicio de Plan Complementario y el estado de afiliaci&oacute;n debe ser &ldquo;Activo&rdquo;<br />
+&bull;	El usuario debe tener asignado un m&eacute;dico personal<br />
+&bull;	El sistema permite realizar la solicitud de las citas m&eacute;dicas a trav&eacute;s de la plataforma de transacciones en l&iacute;nea. <br />
+&bull;	El sistema de transacciones en l&iacute;nea debe estar habilitado en producci&oacute;n.<br />
+&bull;	El sistema debe tener disponibilidad de agenda</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>El usuario accede a la aplicaci&oacute;n transacciones en l&iacute;nea ingresando sus respectivas credenciales (usuario y contrase&ntilde;a)&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema le permite ingresar al sistema de manera correcta</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona en la parte superior del men&uacute; actual la pesta&ntilde;a &ldquo;<strong>Salud</strong>&rdquo;&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;Despliega las opciones del men&uacute;, tal como se describe en el documento &ldquo;<strong>SRS_SWPR57_Paquete4_V1 8</strong>&rdquo;.</p>
+<p>* Solicitar cita m&eacute;dica</p>
+<p>* Solicitar citas de promoci&oacute;n y prevenci&oacute;n</p>
+<p>* Consoltar, reubicar o cancelar citas</p>
+<p>* Hist&oacute;rico de citas</p>
+<p>&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona la opci&oacute;n del men&uacute; actual &ldquo;<strong>Solicitar Citas M&eacute;dicas</strong>&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema verifica si el usuario logueado cuenta con el servicio de Plan complementario (PC) y se encuentra en estado Activo</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>El usuario visualizar&aacute; el m&oacute;dulo de bienvenida para solicitud de citas m&eacute;dicas</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema presenta en pantalla la opci&oacute;n de seleccionar &ldquo;<strong>Para quien es la cita</strong>&rdquo; si es para un beneficiario o para el cotizante. (Funcionalidad actual tal como se describe en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;.)</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona la opci&oacute;n de solicitud de &ldquo;<strong>Cita para Beneficiario</strong>&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema despliega la informaci&oacute;n para la solicitud de las citas m&eacute;dicas, dejando ubicado al usuario en la pantalla &ldquo;C&oacute;mo desea buscar la cita m&eacute;dica.  (Funcionalidad actual como se describe en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;.)</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona de la lista desplegable &ldquo;<strong>Seleccione la especialidad de la cual requiere la cita:</strong>&quot;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema valida si la especialidad seleccionada por el usuario es un servicio de primer nivel para plan complementario seg&uacute;n parametrizaci&oacute;n existente en <strong>SSAS</strong></p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida: <br />
+* Si la especialidad seleccionada por el usuario es un servicio de primer nivel para plan complementario seg&uacute;n parametrizaci&oacute;n existente en SSAS. <strong>FA2</strong><br />
+* Identifica que el usuario cuenta con m&eacute;dico personal asignado. <strong>FA3</strong>.<br />
+* Si la especialidad del servicio seleccionado es igual a la especialidad del m&eacute;dico personal. <strong>FA4</strong><br />
+&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[8]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema&nbsp;Identifica que el usuario no tiene m&eacute;dico personal asignado</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[10]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario contin&uacute;a con el proceso de asignaci&oacute;n de citas seg&uacute;n funcionalidad actual. Ver caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>Fin de flujo alterno</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="590324" name="FA4 - Servicio seleccionado no coincide con especialidad Cita Ben">
+	<node_order><![CDATA[6]]></node_order>
+	<externalid><![CDATA[4995]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>El usuario afiliado a Plan Complementario (PC) puede realizar el proceso de agendamiento de cita con su m&eacute;dico personal a trav&eacute;s de la plataforma virtual de transacciones en l&iacute;nea.</p>]]></summary>
+	<preconditions><![CDATA[<p>&nbsp;</p>
+<p>&bull;	El usuario debe estar afiliado al servicio de Plan Complementario y el estado de afiliaci&oacute;n debe ser &ldquo;Activo&rdquo;<br />
+&bull;	El usuario debe tener asignado un m&eacute;dico personal<br />
+&bull;	El sistema permite realizar la solicitud de las citas m&eacute;dicas a trav&eacute;s de la plataforma de transacciones en l&iacute;nea. <br />
+&bull;	El sistema de transacciones en l&iacute;nea debe estar habilitado en producci&oacute;n.<br />
+&bull;	El sistema debe tener disponibilidad de agenda</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>El usuario accede a la aplicaci&oacute;n transacciones en l&iacute;nea ingresando sus respectivas credenciales (usuario y contrase&ntilde;a)&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema le permite ingresar al sistema de manera correcta</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona en la parte superior del men&uacute; actual la pesta&ntilde;a &ldquo;<strong>Salud</strong>&rdquo;&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;Despliega las opciones del men&uacute;, tal como se describe en el documento &ldquo;<strong>SRS_SWPR57_Paquete4_V1 8</strong>&rdquo;.</p>
+<p>* Solicitar cita m&eacute;dica</p>
+<p>* Solicitar citas de promoci&oacute;n y prevenci&oacute;n</p>
+<p>* Consoltar, reubicar o cancelar citas</p>
+<p>* Hist&oacute;rico de citas</p>
+<p>&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona la opci&oacute;n del men&uacute; actual &ldquo;<strong>Solicitar Citas M&eacute;dicas</strong>&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema verifica si el usuario logueado cuenta con el servicio de Plan complementario (PC) y se encuentra en estado Activo</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>El usuario visualizar&aacute; el m&oacute;dulo de bienvenida para solicitud de citas m&eacute;dicas</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema presenta en pantalla la opci&oacute;n de seleccionar &ldquo;<strong>Para quien es la cita</strong>&rdquo; si es para un beneficiario o para el cotizante. (Funcionalidad actual tal como se describe en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;.)</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona la opci&oacute;n de solicitud de &ldquo;<strong>Cita para Beneficiario</strong>&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema despliega la informaci&oacute;n para la solicitud de las citas m&eacute;dicas, dejando ubicado al usuario en la pantalla &ldquo;C&oacute;mo desea buscar la cita m&eacute;dica.  (Funcionalidad actual como se describe en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;.)</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona de la lista desplegable &ldquo;<strong>Seleccione la especialidad de la cual requiere la cita:</strong>&quot;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema valida si la especialidad seleccionada por el usuario es un servicio de primer nivel para plan complementario seg&uacute;n parametrizaci&oacute;n existente en <strong>SSAS</strong></p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida: <br />
+* Si la especialidad seleccionada por el usuario es un servicio de primer nivel para plan complementario seg&uacute;n parametrizaci&oacute;n existente en SSAS. <strong>FA2</strong><br />
+* Identifica que el usuario cuenta con m&eacute;dico personal asignado. <strong>FA3</strong>.<br />
+* Si la especialidad del servicio seleccionado es igual a la especialidad del m&eacute;dico personal. <strong>FA4</strong><br />
+&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[8]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;Si las validaciones anteriores se cumplen, el sistema presenta el siguiente mensaje en una ventana emergente</p>
+<p><strong>&ldquo;Se&ntilde;or usuario, el m&eacute;dico personal que tiene asignado es NNNNNNN = Nombre   AAAAAAA = apellidos, que atiende = ESPECILIDAD, en la unidad de servicio XXXXXX XXXXXX.<br />
+&iquest;Desea solicitar cita m&eacute;dica con su m&eacute;dico personal NNNNNNN = Nombre   AAAAAAA = apellidos?</strong>&rdquo;, Tenga en cuenta que la cita va a quedar programada para XXXXXX (Primer servicio de la lista &ldquo;<strong>Seleccione la especialidad de la cual requiere la cita</strong>&rdquo; asociada a la especialidad del m&eacute;dico personal asignado), Este mensaje debe estar acompa&ntilde;ado del bot&oacute;n &ldquo;<strong>Solicitar</strong>&rdquo; y &ldquo;<strong>Cancelar</strong>&rdquo;, para confirmar o rechazar la solicitud seg&uacute;n se requiera.&nbsp;</p>
+<p>Ejemplo:</p>
+<p>Se&ntilde;or usuario, el m&eacute;dico personal que tiene asignado es Andr&eacute;s Monsalve, que atiende Medicina Familiar en la unidad de servicio Cll 26<br />
+&iquest;Desea solicitar cita con su m&eacute;dico personal Andr&eacute;s Monsalve?, Tenga en cuenta que la cita va a quedar programada para MEDICINA FAMILIAR 1A VEZ CONSULTA.<br />
+&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[9]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona el bot&oacute;n &ldquo;<strong>Solicitar</strong>&rdquo; del mensaje que se despleg&oacute; en la ventana emergente en el punto anterior <strong>FA6</strong></p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema cierra la ventana emergente</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[10]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema deja ubicado al usuario en la pantalla &ldquo;Como desea buscar su cita m&eacute;dica&rdquo;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[11]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema deja por defecto la especialidad que hab&iacute;a seleccionado el usuario y Bloquea la secci&oacute;n &ldquo;Especialidad de la cual requiere la cita&rdquo;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[12]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>El sistema habilita el par&aacute;metro del campo fecha y Bloquea la secci&oacute;n de &ldquo;Otras opciones de b&uacute;squeda&rdquo;, y habilita el bot&oacute;n &ldquo;continuar&rdquo;.</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[13]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema habilita el par&aacute;metro de la fecha para la solicitud de la cita m&eacute;dica</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[14]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona la Fecha en la que desea solicitar la cita m&eacute;dica y da clic en el bot&oacute;n Continuar para seguir con el proceso de b&uacute;squeda de disponibilidad de agenda con el m&eacute;dico</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema realiza la b&uacute;squeda de disponibilidad de agenda con el m&eacute;dico personal</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[15]]></step_number>
+	<actions><![CDATA[<p>El usuario continua con el proceso de asignaci&oacute;n de citas como se describe en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema permite finalizar el agendamiento correctamente</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="590341" name="FA4 - Servicio seleccionado no coincide con especialidad Cita Cot">
+	<node_order><![CDATA[7]]></node_order>
+	<externalid><![CDATA[4996]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>El usuario afiliado a Plan Complementario (PC) puede realizar el proceso de agendamiento de cita con su m&eacute;dico personal a trav&eacute;s de la plataforma virtual de transacciones en l&iacute;nea.</p>]]></summary>
+	<preconditions><![CDATA[<p>&nbsp;</p>
+<p>&bull;	El usuario debe estar afiliado al servicio de Plan Complementario y el estado de afiliaci&oacute;n debe ser &ldquo;Activo&rdquo;<br />
+&bull;	El usuario debe tener asignado un m&eacute;dico personal<br />
+&bull;	El sistema permite realizar la solicitud de las citas m&eacute;dicas a trav&eacute;s de la plataforma de transacciones en l&iacute;nea. <br />
+&bull;	El sistema de transacciones en l&iacute;nea debe estar habilitado en producci&oacute;n.<br />
+&bull;	El sistema debe tener disponibilidad de agenda</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>El usuario accede a la aplicaci&oacute;n transacciones en l&iacute;nea ingresando sus respectivas credenciales (usuario y contrase&ntilde;a)&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema le permite ingresar al sistema de manera correcta</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona en la parte superior del men&uacute; actual la pesta&ntilde;a &ldquo;<strong>Salud</strong>&rdquo;&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;Despliega las opciones del men&uacute;, tal como se describe en el documento &ldquo;<strong>SRS_SWPR57_Paquete4_V1 8</strong>&rdquo;.</p>
+<p>* Solicitar cita m&eacute;dica</p>
+<p>* Solicitar citas de promoci&oacute;n y prevenci&oacute;n</p>
+<p>* Consoltar, reubicar o cancelar citas</p>
+<p>* Hist&oacute;rico de citas</p>
+<p>&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona la opci&oacute;n del men&uacute; actual &ldquo;<strong>Solicitar Citas M&eacute;dicas</strong>&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema verifica si el usuario logueado cuenta con el servicio de Plan complementario (PC) y se encuentra en estado Activo</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>El usuario visualizar&aacute; el m&oacute;dulo de bienvenida para solicitud de citas m&eacute;dicas</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema presenta en pantalla la opci&oacute;n de seleccionar &ldquo;<strong>Para quien es la cita</strong>&rdquo; si es para un beneficiario o para el cotizante. (Funcionalidad actual tal como se describe en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;.)</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona la opci&oacute;n de solicitud de &ldquo;<strong>Cita para Cotizante</strong>&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema despliega la informaci&oacute;n para la solicitud de las citas m&eacute;dicas, dejando ubicado al usuario en la pantalla &ldquo;C&oacute;mo desea buscar la cita m&eacute;dica.  (Funcionalidad actual como se describe en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;.)</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona de la lista desplegable &ldquo;<strong>Seleccione la especialidad de la cual requiere la cita:</strong>&quot;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema valida si la especialidad seleccionada por el usuario es un servicio de primer nivel para plan complementario seg&uacute;n parametrizaci&oacute;n existente en <strong>SSAS</strong></p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida: <br />
+* Si la especialidad seleccionada por el usuario es un servicio de primer nivel para plan complementario seg&uacute;n parametrizaci&oacute;n existente en SSAS. <strong>FA2</strong><br />
+* Identifica que el usuario cuenta con m&eacute;dico personal asignado. <strong>FA3</strong>.<br />
+* Si la especialidad del servicio seleccionado es igual a la especialidad del m&eacute;dico personal. <strong>FA4</strong><br />
+&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[8]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;Si las validaciones anteriores se cumplen, el sistema presenta el siguiente mensaje en una ventana emergente</p>
+<p><strong>&ldquo;Se&ntilde;or usuario, el m&eacute;dico personal que tiene asignado es NNNNNNN = Nombre   AAAAAAA = apellidos, que atiende = ESPECILIDAD, en la unidad de servicio XXXXXX XXXXXX.<br />
+&iquest;Desea solicitar cita m&eacute;dica con su m&eacute;dico personal NNNNNNN = Nombre   AAAAAAA = apellidos?</strong>&rdquo;, Tenga en cuenta que la cita va a quedar programada para XXXXXX (Primer servicio de la lista &ldquo;<strong>Seleccione la especialidad de la cual requiere la cita</strong>&rdquo; asociada a la especialidad del m&eacute;dico personal asignado), Este mensaje debe estar acompa&ntilde;ado del bot&oacute;n &ldquo;<strong>Solicitar</strong>&rdquo; y &ldquo;<strong>Cancelar</strong>&rdquo;, para confirmar o rechazar la solicitud seg&uacute;n se requiera.&nbsp;</p>
+<p>Ejemplo:</p>
+<p>Se&ntilde;or usuario, el m&eacute;dico personal que tiene asignado es Andr&eacute;s Monsalve, que atiende Medicina Familiar en la unidad de servicio Cll 26<br />
+&iquest;Desea solicitar cita con su m&eacute;dico personal Andr&eacute;s Monsalve?, Tenga en cuenta que la cita va a quedar programada para MEDICINA FAMILIAR 1A VEZ CONSULTA.<br />
+&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[9]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona el bot&oacute;n &ldquo;<strong>Solicitar</strong>&rdquo; del mensaje que se despleg&oacute; en la ventana emergente en el punto anterior <strong>FA6</strong></p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema cierra la ventana emergente</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[10]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema deja ubicado al usuario en la pantalla &ldquo;Como desea buscar su cita m&eacute;dica&rdquo;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[11]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema deja por defecto la especialidad que hab&iacute;a seleccionado el usuario y Bloquea la secci&oacute;n &ldquo;Especialidad de la cual requiere la cita&rdquo;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[12]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>El sistema habilita el par&aacute;metro del campo fecha y Bloquea la secci&oacute;n de &ldquo;Otras opciones de b&uacute;squeda&rdquo;, y habilita el bot&oacute;n &ldquo;continuar&rdquo;.</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[13]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema habilita el par&aacute;metro de la fecha para la solicitud de la cita m&eacute;dica</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[14]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona la Fecha en la que desea solicitar la cita m&eacute;dica y da clic en el bot&oacute;n Continuar para seguir con el proceso de b&uacute;squeda de disponibilidad de agenda con el m&eacute;dico</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema realiza la b&uacute;squeda de disponibilidad de agenda con el m&eacute;dico personal</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[15]]></step_number>
+	<actions><![CDATA[<p>El usuario continua con el proceso de asignaci&oacute;n de citas como se describe en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema permite finalizar el agendamiento correctamente</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="590247" name="FA5 - Botón cancelar de la ventana emergente">
+	<node_order><![CDATA[9]]></node_order>
+	<externalid><![CDATA[4990]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>El usuario afiliado a Plan Complementario (PC) puede realizar el proceso de agendamiento de cita con su m&eacute;dico personal a trav&eacute;s de la plataforma virtual de transacciones en l&iacute;nea.</p>]]></summary>
+	<preconditions><![CDATA[<p>&nbsp;</p>
+<p>&bull;	El usuario debe estar afiliado al servicio de Plan Complementario y el estado de afiliaci&oacute;n debe ser &ldquo;Activo&rdquo;<br />
+&bull;	El usuario debe tener asignado un m&eacute;dico personal<br />
+&bull;	El sistema permite realizar la solicitud de las citas m&eacute;dicas a trav&eacute;s de la plataforma de transacciones en l&iacute;nea. <br />
+&bull;	El sistema de transacciones en l&iacute;nea debe estar habilitado en producci&oacute;n.<br />
+&bull;	El sistema debe tener disponibilidad de agenda</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>El usuario accede a la aplicaci&oacute;n transacciones en l&iacute;nea ingresando sus respectivas credenciales (usuario y contrase&ntilde;a)&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema le permite ingresar al sistema de manera correcta</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona en la parte superior del men&uacute; actual la pesta&ntilde;a &ldquo;<strong>Salud</strong>&rdquo;&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;Despliega las opciones del men&uacute;, tal como se describe en el documento &ldquo;<strong>SRS_SWPR57_Paquete4_V1 8</strong>&rdquo;.</p>
+<p>* Solicitar cita m&eacute;dica</p>
+<p>* Solicitar citas de promoci&oacute;n y prevenci&oacute;n</p>
+<p>* Consoltar, reubicar o cancelar citas</p>
+<p>* Hist&oacute;rico de citas</p>
+<p>&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona la opci&oacute;n del men&uacute; actual &ldquo;<strong>Solicitar Citas M&eacute;dicas</strong>&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema verifica si el usuario logueado cuenta con el servicio de Plan complementario (PC) y se encuentra en estado Activo</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>El usuario visualizar&aacute; el m&oacute;dulo de bienvenida para solicitud de citas m&eacute;dicas</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema presenta en pantalla la opci&oacute;n de seleccionar &ldquo;<strong>Para quien es la cita</strong>&rdquo; si es para un beneficiario o para el cotizante. (Funcionalidad actual tal como se describe en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;.)</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona la opci&oacute;n de solicitud de &ldquo;<strong>Cita para Beneficiario</strong>&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema despliega la informaci&oacute;n para la solicitud de las citas m&eacute;dicas, dejando ubicado al usuario en la pantalla &ldquo;C&oacute;mo desea buscar la cita m&eacute;dica.  (Funcionalidad actual como se describe en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;.)</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona de la lista desplegable &ldquo;<strong>Seleccione la especialidad de la cual requiere la cita:</strong>&quot;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema valida si la especialidad seleccionada por el usuario es un servicio de primer nivel para plan complementario seg&uacute;n parametrizaci&oacute;n existente en <strong>SSAS</strong></p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida: <br />
+* Si la especialidad seleccionada por el usuario es un servicio de primer nivel para plan complementario seg&uacute;n parametrizaci&oacute;n existente en SSAS. <strong>FA2</strong><br />
+* Identifica que el usuario cuenta con m&eacute;dico personal asignado. <strong>FA3</strong>.<br />
+* Si la especialidad del servicio seleccionado es igual a la especialidad del m&eacute;dico personal. <strong>FA4</strong><br />
+&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[8]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;Si las validaciones anteriores se cumplen, el sistema presenta el siguiente mensaje en una ventana emergente</p>
+<p>&ldquo;<strong>Se&ntilde;or usuario, el m&eacute;dico personal que tiene asignado es NNNNNNN = Nombre   AAAAAAA = apellidos, que atiende = ESPECILIDAD en la unidad de servicio XXXXXX XXXXXX.<br />
+&iquest;Desea solicitar cita m&eacute;dica con su m&eacute;dico personal?</strong>&rdquo;.</p>
+<p>Este mensaje debe estar acompa&ntilde;ado del bot&oacute;n &ldquo;<strong>Solicitar</strong>&rdquo; y &ldquo;<strong>Cancelar</strong>&rdquo;, para confirmar o rechazar la solicitud seg&uacute;n se requiera.</p>
+<p><br />
+Ejemplo:</p>
+<p>Se&ntilde;or usuario, el m&eacute;dico personal que tiene asignado es Andr&eacute;s Monsalve, que atiende Medicina Familiar en la unidad de servicio Cll 26.<br />
+&iquest;Desea solicitar cita con su m&eacute;dico personal? </p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[9]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario&nbsp;selecciona el bot&oacute;n &ldquo;<strong>Cancelar</strong>&rdquo; que aparece en la ventana del mensaje emergente</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema cierra la ventana emergente</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[10]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida que la especialidad asociada al servicio seleccionado por el usuario, es igual a la especialidad de su m&eacute;dico personal Asignado&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[11]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema deja ubicado al usuario en la pantalla &ldquo;<strong>Como desea buscar su cita m&eacute;dica</strong>&rdquo;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[12]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema en la secci&oacute;n de otras opciones de b&uacute;squeda cambia la etiqueta de &ldquo;M&eacute;dico tratante&rdquo; por la etiqueta de &ldquo;M&eacute;dico personal&rdquo;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[13]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona la opci&oacute;n de &ldquo;M&eacute;dico personal&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema visualiza nombre del m&eacute;dico personal</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[14]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema&nbsp;retorna al usuario a seleccionar la fecha en la que solicita la cita m&eacute;dica.</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="590395" name="FA6 - Botón cancelar Especialidad seleccionada diferente">
+	<node_order><![CDATA[10]]></node_order>
+	<externalid><![CDATA[4999]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>El usuario afiliado a Plan Complementario (PC) puede realizar el proceso de agendamiento de cita con su m&eacute;dico personal a trav&eacute;s de la plataforma virtual de transacciones en l&iacute;nea.</p>]]></summary>
+	<preconditions><![CDATA[<p>&nbsp;</p>
+<p>&bull;	El usuario debe estar afiliado al servicio de Plan Complementario y el estado de afiliaci&oacute;n debe ser &ldquo;Activo&rdquo;<br />
+&bull;	El usuario debe tener asignado un m&eacute;dico personal<br />
+&bull;	El sistema permite realizar la solicitud de las citas m&eacute;dicas a trav&eacute;s de la plataforma de transacciones en l&iacute;nea. <br />
+&bull;	El sistema de transacciones en l&iacute;nea debe estar habilitado en producci&oacute;n.<br />
+&bull;	El sistema debe tener disponibilidad de agenda</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>El usuario accede a la aplicaci&oacute;n transacciones en l&iacute;nea ingresando sus respectivas credenciales (usuario y contrase&ntilde;a)&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema le permite ingresar al sistema de manera correcta</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona en la parte superior del men&uacute; actual la pesta&ntilde;a &ldquo;<strong>Salud</strong>&rdquo;&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;Despliega las opciones del men&uacute;, tal como se describe en el documento &ldquo;<strong>SRS_SWPR57_Paquete4_V1 8</strong>&rdquo;.</p>
+<p>* Solicitar cita m&eacute;dica</p>
+<p>* Solicitar citas de promoci&oacute;n y prevenci&oacute;n</p>
+<p>* Consoltar, reubicar o cancelar citas</p>
+<p>* Hist&oacute;rico de citas</p>
+<p>&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona la opci&oacute;n del men&uacute; actual &ldquo;<strong>Solicitar Citas M&eacute;dicas</strong>&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema verifica si el usuario logueado cuenta con el servicio de Plan complementario (PC) y se encuentra en estado Activo</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>El usuario visualizar&aacute; el m&oacute;dulo de bienvenida para solicitud de citas m&eacute;dicas</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema presenta en pantalla la opci&oacute;n de seleccionar &ldquo;<strong>Para quien es la cita</strong>&rdquo; si es para un beneficiario o para el cotizante. (Funcionalidad actual tal como se describe en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;.)</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona la opci&oacute;n de solicitud de &ldquo;<strong>Cita para Cotizante</strong>&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema despliega la informaci&oacute;n para la solicitud de las citas m&eacute;dicas, dejando ubicado al usuario en la pantalla &ldquo;C&oacute;mo desea buscar la cita m&eacute;dica.  (Funcionalidad actual como se describe en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;.)</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona de la lista desplegable &ldquo;<strong>Seleccione la especialidad de la cual requiere la cita:</strong>&quot;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema valida si la especialidad seleccionada por el usuario es un servicio de primer nivel para plan complementario seg&uacute;n parametrizaci&oacute;n existente en <strong>SSAS</strong></p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>El sistema valida: <br />
+* Si la especialidad seleccionada por el usuario es un servicio de primer nivel para plan complementario seg&uacute;n parametrizaci&oacute;n existente en SSAS. <strong>FA2</strong><br />
+* Identifica que el usuario cuenta con m&eacute;dico personal asignado. <strong>FA3</strong>.<br />
+* Si la especialidad del servicio seleccionado es igual a la especialidad del m&eacute;dico personal. <strong>FA4</strong><br />
+&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[8]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;Si las validaciones anteriores se cumplen, el sistema presenta el siguiente mensaje en una ventana emergente</p>
+<p><strong>&ldquo;Se&ntilde;or usuario, el m&eacute;dico personal que tiene asignado es NNNNNNN = Nombre   AAAAAAA = apellidos, que atiende = ESPECILIDAD, en la unidad de servicio XXXXXX XXXXXX.<br />
+&iquest;Desea solicitar cita m&eacute;dica con su m&eacute;dico personal NNNNNNN = Nombre   AAAAAAA = apellidos?</strong>&rdquo;, Tenga en cuenta que la cita va a quedar programada para XXXXXX (Primer servicio de la lista &ldquo;<strong>Seleccione la especialidad de la cual requiere la cita</strong>&rdquo; asociada a la especialidad del m&eacute;dico personal asignado), Este mensaje debe estar acompa&ntilde;ado del bot&oacute;n &ldquo;<strong>Solicitar</strong>&rdquo; y &ldquo;<strong>Cancelar</strong>&rdquo;, para confirmar o rechazar la solicitud seg&uacute;n se requiera.&nbsp;</p>
+<p>Ejemplo:</p>
+<p>Se&ntilde;or usuario, el m&eacute;dico personal que tiene asignado es Andr&eacute;s Monsalve, que atiende Medicina Familiar en la unidad de servicio Cll 26<br />
+&iquest;Desea solicitar cita con su m&eacute;dico personal Andr&eacute;s Monsalve?, Tenga en cuenta que la cita va a quedar programada para MEDICINA FAMILIAR 1A VEZ CONSULTA.<br />
+&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[9]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario selecciona el bot&oacute;n &ldquo;<strong>Solicitar</strong>&rdquo; del mensaje que se despleg&oacute; en la ventana emergente en el punto anterior <strong>FA6</strong></p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema cierra la ventana emergente</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[13]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema deja ubicado al usuario en la pantalla &ldquo;C&oacute;mo desea buscar su cita m&eacute;dica&rdquo;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[15]]></step_number>
+	<actions><![CDATA[<p>El usuario continua con el proceso de asignaci&oacute;n de citas como se describe en el caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema permite finalizar el agendamiento correctamente</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="590412" name="Requisitos Especiales">
+	<node_order><![CDATA[11]]></node_order>
+	<externalid><![CDATA[5000]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>R1. Los mensajes informativos implementados en la aplicaci&oacute;n deben ser parametrizables.</p>
+<p>R2. Para los usuarios de la empresa del &ldquo;Acueducto&rdquo; la selecci&oacute;n de m&eacute;dico Personal no ser&aacute; aplicada. La funcionalidad sigue operando como se encuentra implantada hoy en d&iacute;a.  Ver caso de uso &ldquo;CU_SWPR57_Paquete4_115_AGENDAR_CITAS_MEDICAS_V5.1&rdquo;  </p>]]></summary>
+	<preconditions><![CDATA[]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario agenda con un usuario del EAAB</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema permite agendar como actualmente se muestra sin la opci&oacute;n de medico personal</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema puede cambiar los mensajes informativos mediante un archivo modificable o consulta en base de datos</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>&nbsp;El usuario agenda con un usuario del POS</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema permite agendar como actualemente se muestra sin la opci&oacute;n del medico personal.</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="590417" name="FA7 - Reubicar cita médica agendada con médico personal Cotizante">
+	<node_order><![CDATA[12]]></node_order>
+	<externalid><![CDATA[5001]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>El usuario debera Reubicar una cita m&eacute;dica agendada anteriormente con un medico personal para un cotizante</p>]]></summary>
+	<preconditions><![CDATA[<p>&nbsp;</p>
+<p>&bull;	El usuario debe estar afiliado al servicio de Plan Complementario y el estado de afiliaci&oacute;n debe ser &ldquo;Activo&rdquo;<br />
+&bull;	El usuario debe tener asignado un m&eacute;dico personal<br />
+&bull;	El sistema permite realizar la solicitud de las citas m&eacute;dicas a trav&eacute;s de la plataforma de transacciones en l&iacute;nea. <br />
+&bull;	El sistema de transacciones en l&iacute;nea debe estar habilitado en producci&oacute;n.<br />
+&bull;	El sistema debe tener disponibilidad de agenda</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>El usuario accede a la aplicaci&oacute;n transacciones en l&iacute;nea ingresando sus respectivas credenciales (usuario y contrase&ntilde;a)&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema le permite ingresar al sistema de manera correcta</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona en la parte superior del men&uacute; actual la pesta&ntilde;a &ldquo;<strong>Salud</strong>&rdquo;&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;Despliega las opciones del men&uacute;, tal como se describe en el documento &ldquo;<strong>SRS_SWPR57_Paquete4_V1 8</strong>&rdquo;.</p>
+<p>* Solicitar cita m&eacute;dica</p>
+<p>* Solicitar citas de promoci&oacute;n y prevenci&oacute;n</p>
+<p>* Consoltar, reubicar o cancelar citas</p>
+<p>* Hist&oacute;rico de citas</p>
+<p>&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona la opci&oacute;n del men&uacute; actual &ldquo;<strong>Consultar, reubicar o cancelar citas</strong>&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra la pantalla pertinente y el usuario continua con el flujo</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>Fin de flujo alterno</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="590425" name="FA8 - Reubicar cita médica agendada con médico personal Beneficiario">
+	<node_order><![CDATA[13]]></node_order>
+	<externalid><![CDATA[5002]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>El usuario debera Reubicar una cita m&eacute;dica agendada anteriormente con un medico personal para un beneficiario</p>]]></summary>
+	<preconditions><![CDATA[<p>&nbsp;</p>
+<p>&bull;	El usuario debe estar afiliado al servicio de Plan Complementario y el estado de afiliaci&oacute;n debe ser &ldquo;Activo&rdquo;<br />
+&bull;	El usuario debe tener asignado un m&eacute;dico personal<br />
+&bull;	El sistema permite realizar la solicitud de las citas m&eacute;dicas a trav&eacute;s de la plataforma de transacciones en l&iacute;nea. <br />
+&bull;	El sistema de transacciones en l&iacute;nea debe estar habilitado en producci&oacute;n.<br />
+&bull;	El sistema debe tener disponibilidad de agenda</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>El usuario accede a la aplicaci&oacute;n transacciones en l&iacute;nea ingresando sus respectivas credenciales (usuario y contrase&ntilde;a)&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema le permite ingresar al sistema de manera correcta</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona en la parte superior del men&uacute; actual la pesta&ntilde;a &ldquo;<strong>Salud</strong>&rdquo;&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;Despliega las opciones del men&uacute;, tal como se describe en el documento &ldquo;<strong>SRS_SWPR57_Paquete4_V1 8</strong>&rdquo;.</p>
+<p>* Solicitar cita m&eacute;dica</p>
+<p>* Solicitar citas de promoci&oacute;n y prevenci&oacute;n</p>
+<p>* Consoltar, reubicar o cancelar citas</p>
+<p>* Hist&oacute;rico de citas</p>
+<p>&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona la opci&oacute;n del men&uacute; actual &ldquo;<strong>Consultar, reubicar o cancelar citas</strong>&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra la pantalla pertinente y el usuario continua con el flujo</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>Fin de flujo alterno</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="590431" name="FA9 - Verificar el histórico de las citas médicas">
+	<node_order><![CDATA[14]]></node_order>
+	<externalid><![CDATA[5003]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>El usuario debera Cancelar la cita m&eacute;dica con m&eacute;dico personal y se debera consultar que se encuentre registrada correctamente en el historico de citas m&eacute;dicas</p>]]></summary>
+	<preconditions><![CDATA[<p>&nbsp;</p>
+<p>&bull;	El usuario debe estar afiliado al servicio de Plan Complementario y el estado de afiliaci&oacute;n debe ser &ldquo;Activo&rdquo;<br />
+&bull;	El usuario debe tener asignado un m&eacute;dico personal<br />
+&bull;	El sistema permite realizar la solicitud de las citas m&eacute;dicas a trav&eacute;s de la plataforma de transacciones en l&iacute;nea. <br />
+&bull;	El sistema de transacciones en l&iacute;nea debe estar habilitado en producci&oacute;n.<br />
+&bull;	El sistema debe tener disponibilidad de agenda</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>El usuario accede a la aplicaci&oacute;n transacciones en l&iacute;nea ingresando sus respectivas credenciales (usuario y contrase&ntilde;a)&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;El sistema le permite ingresar al sistema de manera correcta</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona en la parte superior del men&uacute; actual la pesta&ntilde;a &ldquo;<strong>Salud</strong>&rdquo;&nbsp;</p>]]></actions>
+	<expectedresults><![CDATA[<p>&nbsp;Despliega las opciones del men&uacute;, tal como se describe en el documento &ldquo;<strong>SRS_SWPR57_Paquete4_V1 8</strong>&rdquo;.</p>
+<p>* Solicitar cita m&eacute;dica</p>
+<p>* Solicitar citas de promoci&oacute;n y prevenci&oacute;n</p>
+<p>* Consoltar, reubicar o cancelar citas</p>
+<p>* Hist&oacute;rico de citas</p>
+<p>&nbsp;</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>El usuario selecciona la opci&oacute;n del men&uacute; actual &ldquo;<strong>Hist&oacute;rico de citas</strong>&rdquo;</p>]]></actions>
+	<expectedresults><![CDATA[<p>El sistema muestra la pantalla pertinente y el usuario continua con el flujo</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[]]></actions>
+	<expectedresults><![CDATA[<p>Fin de flujo alterno</p>]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+</testsuite>
